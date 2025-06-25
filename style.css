@@ -1,0 +1,122 @@
+/* style.css (Mobile-Friendly Version) */
+body {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 1em;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column; /* Stack vertically on small screens */
+    gap: 1em;
+}
+
+/* --- Layout --- */
+.player-area { flex-grow: 1; display: flex; flex-direction: column; gap: 1em; }
+#side-panel { width: 100%; }
+
+/* --- Components --- */
+.board-area, .panel-box {
+    background-color: #16213e;
+    border: 2px solid #0f3460;
+    border-radius: 8px;
+    padding: 1em;
+}
+
+.board-title, .panel-title {
+    font-size: 1.2em;
+    color: #e94560;
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e94560;
+}
+
+.unit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+#log-content { height: 150px; overflow-y: scroll; display: flex; flex-direction: column-reverse; font-size: 0.8em; }
+#log-content p { margin: 3px 0; }
+#actions-content, #hand-content { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+
+/* --- Cards and Buttons --- */
+.unit-card {
+    background-color: #2e2e48;
+    border: 1px solid #533483;
+    border-radius: 5px;
+    padding: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.unit-card.targetable { border-color: #e94560; cursor: pointer; }
+.unit-card.spent { opacity: 0.6; }
+.unit-card h4 { margin: 0 0 5px 0; color: #a2a2ff; }
+.unit-card p { margin: 2px 0; font-size: 0.9em; line-height: 1.4; }
+
+button {
+    background-color: #533483;
+    color: white; border: 1px solid #a2a2ff;
+    border-radius: 4px; padding: 10px;
+    cursor: pointer; width: 100%; font-size: 0.9em;
+}
+button:hover { background-color: #e94560; }
+
+/* --- Keyword and Tooltip Styling (Mobile-First) --- */
+.keyword {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    color: #ffd700; /* Gold color */
+    cursor: pointer; /* Change cursor to pointer to indicate it's tappable */
+}
+
+/* This is the tooltip element that will be created by JS */
+.tooltip-popup {
+    visibility: hidden; /* Hidden by default */
+    opacity: 0;
+    position: fixed; /* Fixed position relative to the viewport */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Center it perfectly */
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ffd700;
+    width: 80%;
+    max-width: 350px;
+    z-index: 1001; /* Make sure it's on top of everything */
+    transition: opacity 0.3s, visibility 0.3s;
+    text-align: left;
+}
+.tooltip-popup.tooltip-visible {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip-popup h4 { color: #ffd700; margin-top: 0; }
+
+/* This is the backdrop to close the tooltip */
+.tooltip-backdrop {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.tooltip-backdrop.tooltip-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Media Query for larger screens (laptops, desktops) */
+@media (min-width: 800px) {
+    #game-container {
+        flex-direction: row;
+    }
+    #side-panel {
+        width: 350px;
+        flex-shrink: 0;
+    }
+    #log-content { height: 200px; }
+}

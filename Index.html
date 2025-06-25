@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.U.G.E. Tactical Card Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- The player areas and side panel are unchanged -->
+        <div id="opponent-area" class="player-area"></div>
+        <div id="player-area" class="player-area"></div>
+        <div id="side-panel">
+            <div id="game-info">
+                <h2>Turn: <span id="turn-counter">1</span></h2>
+                <h3>Phase: <span id="phase-status">Setup</span></h3>
+            </div>
+            <div id="log-box" class="panel-box">
+                <div class="panel-title">Game Log</div>
+                <div id="log-content"></div>
+            </div>
+            <div id="actions-box" class="panel-box">
+                <div class="panel-title">Actions</div>
+                <div id="actions-content"></div>
+            </div>
+            <div id="hand-box" class="panel-box">
+                <div class.panel-title">Your Hand</div>
+                <div id="hand-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD THESE TWO LINES AT THE END OF THE BODY -->
+    <div id="tooltip-backdrop" class="tooltip-backdrop"></div>
+    <div id="tooltip-popup" class="tooltip-popup"></div>
+
+    <script src="game.js"></script>
+</body>
+</html>
